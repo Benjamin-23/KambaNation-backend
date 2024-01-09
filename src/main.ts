@@ -13,7 +13,7 @@ async function bootstrap() {
   );
   // Serve static files from the uploads
   app.useStaticAssets(join(__dirname, '..', 'productImages'), {
-    prefix: '/public',
+    prefix: '/productImages',
   });
 
   app.enableCors({

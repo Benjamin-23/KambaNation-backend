@@ -12,15 +12,21 @@ export class ProductService {
     private readonly productRepository: Repository<Product>,
   ) {}
 
-  async create(createProductDto: CreateProductDto, image: Express.Multer.File) {
+  async create(
+    createProductDto: CreateProductDto,
+    image: Express.Multer.File,
+  ): Promise<Product> {
     const product = this.productRepository.create(createProductDto);
     await this.productRepository.save(product);
     // handle image storage
-    if (image) {
-      // update the product with the  image path
-      product.image = image.filename;
-      console.log(product.image, 'my img');
+    console.log(product, 'product details');
 
+    if (image) {
+      console.log(image, 'Image properties');
+      // console.log(image.originalname, 'unafika uku kweli?');
+      product.image = image.path;
+      console.log(product.image, 'my img');
+      // update the product with the  image path
       await this.productRepository.save(product);
     }
     return product;
