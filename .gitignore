@@ -2,6 +2,7 @@
 /dist
 /node_modules
 /productImage
+/src/auth/constants.ts
 
 # Logs
 logs
