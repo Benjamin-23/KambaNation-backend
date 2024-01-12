@@ -13,12 +13,12 @@ async function bootstrap() {
   );
   // Serve static files from the uploads
   app.useStaticAssets(join(__dirname, '..', 'productImages'), {
-    prefix: '/productImages',
+    prefix: '/public',
   });
 
   app.enableCors({
     origin: ['http://localhost:3001'],
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
   await app.listen(3000);

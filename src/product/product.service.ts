@@ -19,13 +19,9 @@ export class ProductService {
     const product = this.productRepository.create(createProductDto);
     await this.productRepository.save(product);
     // handle image storage
-    console.log(product, 'product details');
 
     if (image) {
-      console.log(image, 'Image properties');
-      // console.log(image.originalname, 'unafika uku kweli?');
       product.image = image.path;
-      console.log(product.image, 'my img');
       // update the product with the  image path
       await this.productRepository.save(product);
     }
@@ -44,7 +40,7 @@ export class ProductService {
   //   return `This action updates a #${id} product`;
   // }
 
-  // remove(id: number) {
-  //   return `This action removes a #${id} product`;
-  // }
+  async removeAll() {
+    return await this.productRepository.clear();
+  }
 }

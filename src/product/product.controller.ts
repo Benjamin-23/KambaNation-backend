@@ -6,6 +6,7 @@ import {
   Param,
   UseInterceptors,
   UploadedFile,
+  Delete,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -23,8 +24,6 @@ export class ProductController {
     @UploadedFile() image: Express.Multer.File,
   ) {
     await this.productService.create(createProductDto, image);
-    console.log(image, 'kuna nini');
-
     return { message: 'Product Create successfully' };
   }
 
@@ -43,8 +42,10 @@ export class ProductController {
   //   return this.productService.update(+id, updateProductDto);
   // }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.productService.remove(+id);
-  // }
+  // remove all the product
+  @Delete('removeAll')
+  async removeAll() {
+    await this.productService.removeAll();
+    return { message: 'All products removed successfully' };
+  }
 }

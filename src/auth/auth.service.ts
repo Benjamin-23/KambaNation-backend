@@ -13,11 +13,16 @@ export class AuthService {
   ) {}
 
   async signIn(email: any, password: string) {
-    const user = await this.userRepository.findOne(email);
-    if (user?.password !== password) {
-      throw new UnauthorizedException();
+    const user = await this.userRepository.findOneBy({ email });
+
+    if (!password) {
+      throw new UnauthorizedException('We need token to authorize');
     }
-    const payload = { sub: user.id, userEmail: user.email };
+    const payload = {
+      sub: user.id,
+      userEmail: user.email,
+    };
+
     return {
       access_token: await this.jwtService.signAsync(payload),
     };

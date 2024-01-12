@@ -5,6 +5,8 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ProductModule } from './product/product.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 // import { ProductService } from './product/product.service';
 
@@ -23,6 +25,9 @@ import { ProductModule } from './product/product.module';
     }),
     AuthModule,
     ProductModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'productImages'),
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
