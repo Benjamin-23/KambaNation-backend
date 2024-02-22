@@ -13,6 +13,14 @@ export class CreateProductDto {
   @IsOptional()
   readonly categories?: string;
 
+  @IsString()
+  @IsOptional()
+  readonly price?: string;
+
+  @IsString()
+  @IsOptional()
+  readonly units?: string;
+
   @IsOptional()
   @Type(() => Object)
   readonly image: any;

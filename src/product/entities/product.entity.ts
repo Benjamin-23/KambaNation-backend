@@ -12,6 +12,12 @@ export class Product {
   categories: string;
 
   @Column({ nullable: true })
+  price: string;
+
+  @Column({ nullable: true })
+  units: string;
+
+  @Column({ nullable: true })
   color: string;
 
   @Column({ nullable: true })

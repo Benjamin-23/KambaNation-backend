@@ -13,7 +13,7 @@ import { extname } from 'path';
     MulterModule.register({
       storage: diskStorage({
         destination: (req, file, callback) => {
-          callback(null, './productImages');
+          callback(null, './public');
         },
         filename: (req, file, callback) => {
           const randomName = Array(32)
